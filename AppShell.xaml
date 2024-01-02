@@ -12,9 +12,8 @@
         Route="MainPage" />
 
         <ShellContent
-    Title="Home"
-    ContentTemplate="{DataTemplate local:MainPage}"
-    Route="MainPage" />
+    Title="Vezi Programare"
+    ContentTemplate="{DataTemplate local:ProgramareEntryPage}"/>
 
     </TabBar>
 
