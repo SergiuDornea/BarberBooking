@@ -12,9 +12,7 @@
         Route="MainPage" />
 
         <ShellContent
-    Title="Vezi Programare"
-    ContentTemplate="{DataTemplate local:ProgramareEntryPage}"/>
-
-    </TabBar>
-
+   Title="Vezi programari"
+   ContentTemplate="{DataTemplate local:ProgramareListPage}"/>
+        </TabBar>
 </Shell>

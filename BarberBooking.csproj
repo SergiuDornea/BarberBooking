@@ -54,10 +54,17 @@
 
 	<ItemGroup>
 	  <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+	  <PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.7" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="ProgramareDetailPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="ProgramareEntryPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="ProgramareListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="ProgramarePage.xaml">
