@@ -12,5 +12,7 @@
 
         <Button Text="Login" Clicked="OnLoginButtonClicked" />
 
+        <Button Text="Sign in here" Clicked="OnSignButtonClicked" />
+
     </StackLayout>
 </ContentPage>

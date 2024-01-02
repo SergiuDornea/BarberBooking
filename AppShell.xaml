@@ -14,5 +14,9 @@
         <ShellContent
    Title="Vezi programari"
    ContentTemplate="{DataTemplate local:ProgramareListPage}"/>
-        </TabBar>
+
+        <ShellContent
+   Title="Log OUT"
+   ContentTemplate="{DataTemplate local:LogoutPage}"/>
+    </TabBar>
 </Shell>

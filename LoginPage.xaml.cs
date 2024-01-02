@@ -25,4 +25,10 @@ public partial class LoginPage : ContentPage
             await DisplayAlert("Login nereusit", "Email sau parola invalida", "OK");
         }
     }
+
+
+    private async void OnSignButtonClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new AuthPage());
+    }
 }

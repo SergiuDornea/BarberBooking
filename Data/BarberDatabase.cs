@@ -16,7 +16,11 @@ namespace BarberBooking.Data
         {
             _database = new SQLiteAsyncConnection(dbPath);
             _database.CreateTableAsync<Programare>().Wait();
+            _database.CreateTableAsync<Barber>().Wait();
+            _database.CreateTableAsync<Client>().Wait();
         }
+
+        // Programare
         public Task<List<Programare>> GetProgramariAsync()
         {
             return _database.Table<Programare>().ToListAsync();
@@ -41,6 +45,68 @@ namespace BarberBooking.Data
         public Task<int> DeleteProgramareAsync(Programare programare)
         {
             return _database.DeleteAsync(programare);
+        }
+
+
+        // Barber
+        public Task<List<Barber>> GetBarbersAsync()
+        {
+            return _database.Table<Barber>().ToListAsync();
+        }
+
+        public Task<Barber> GetBarberAsync(int id)
+        {
+            return _database.Table<Barber>()
+                            .Where(i => i.ID == id)
+                            .FirstOrDefaultAsync();
+        }
+
+        public Task<int> SaveBarberAsync(Barber barber)
+        {
+            if (barber.ID != 0)
+            {
+                return _database.UpdateAsync(barber);
+            }
+            else
+            {
+                return _database.InsertAsync(barber);
+            }
+        }
+
+        public Task<int> DeleteBarberAsync(Barber barber)
+        {
+            return _database.DeleteAsync(barber);
+        }
+
+        // Client
+
+        public Task<List<Client>> GetClientsAsync()
+        {
+            return _database.Table<Client>().ToListAsync();
+        }
+
+        public Task<Client> GetClientAsync(int id)
+        {
+            return _database.Table<Client>()
+                            .Where(i => i.ID == id)
+                            .FirstOrDefaultAsync();
+        }
+
+        public Task<int> SaveClientAsync(Client client)
+        {
+            if (client.ID != 0)
+            {
+                return _database.UpdateAsync(client);
+            }
+            else
+            {
+                return _database.InsertAsync(client);
+            }
+        }
+
+        public Task<int> DeleteClientAsync(Client client)
+        {
+            return _database.DeleteAsync(client);
         }
     }
 }
