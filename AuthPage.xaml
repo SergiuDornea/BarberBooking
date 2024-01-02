@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BarberBooking.AuthPage"
+             Shell.TabBarIsVisible="False"
              Title="AuthPage">
     <StackLayout Margin="20">
         <Label Text="Completeti urmatoarele date:" FontAttributes="Bold" />
@@ -10,7 +11,7 @@
         <Entry x:Name="emailEntry" Placeholder="Email" />
 
         <Label Text="Parola: " FontAttributes="Bold" />
-        <Entry x:Name="passwordEntry" Placeholder="Parola" IsPassword="True" />
+        <Entry x:Name="parolaEntry" Placeholder="Parola" IsPassword="True" />
 
         <Label Text="Nume: " FontAttributes="Bold" />
         <Entry x:Name="numeEntry" Placeholder="Nume"  />

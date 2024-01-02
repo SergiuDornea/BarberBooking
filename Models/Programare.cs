@@ -1,4 +1,5 @@
 ﻿using SQLite;
+using SQLiteNetExtensions.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,9 @@ namespace BarberBooking.Models
         [MaxLength(100), Unique]
         public string Descriere { get; set; }
         public DateTime Data { get; set; }
+
+        [ForeignKey(typeof(Client))]
+        public int UserId { get; set; }
 
     }
 }

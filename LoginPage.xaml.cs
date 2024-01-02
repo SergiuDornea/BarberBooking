@@ -7,15 +7,16 @@ public partial class LoginPage : ContentPage
     public LoginPage()
 	{
 		InitializeComponent();
-	}
+        Shell.SetTabBarIsVisible(Application.Current, false);
+    }
 
     // logica de log in
     private async void OnLoginButtonClicked(object sender, EventArgs e)
     {
         string email = emailEntry.Text;
-        string password = passwordEntry.Text;
+        string parola = parolaEntry.Text;
 
-        if (userService.AuthenticateUser(email, password))
+        if (userService.AuthenticateUser(email, parola))
         {
             //daca log inul e valid - redirect user la home
             await Navigation.PushAsync(new MainPage());

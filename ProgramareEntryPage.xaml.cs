@@ -1,11 +1,12 @@
 using BarberBooking.Models;
-
+using BarberBooking.Auth;
 namespace BarberBooking;
 
 public partial class ProgramareEntryPage : ContentPage
 {
     private Programare currentProgramare;
 
+    private int loggedInUserId = 0;
     public ProgramareEntryPage()
     {
         InitializeComponent();

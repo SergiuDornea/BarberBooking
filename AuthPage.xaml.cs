@@ -8,12 +8,13 @@ public partial class AuthPage : ContentPage
 	public AuthPage()
 	{
 		InitializeComponent();
-	}
+        Shell.SetTabBarIsVisible(Application.Current, false);
+    }
 
     private async void OnSignUpButtonClicked(object sender, EventArgs e)
     {
         string email = emailEntry.Text;
-        string parola = passwordEntry.Text;
+        string parola = parolaEntry.Text;
         string nume = numeEntry.Text;
         string prenume = prenumeEntry.Text;
 
