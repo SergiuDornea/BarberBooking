@@ -1,4 +1,5 @@
-﻿namespace BarberBooking;
+﻿using BarberBooking.Auth;
+namespace BarberBooking;
 
 public partial class AppShell : Shell
 {
@@ -20,19 +21,19 @@ public partial class AppShell : Shell
     //public static bool IsBarber { get; set; } = false;
 
     // problema necesita o propietate bindable ce se autosesizeaza cand are loc o schimbare
-    public static BindableProperty IsBarberProperty { get; } = BindableProperty.Create(nameof(IsBarber), typeof(bool), typeof(AppShell), false);
+    public static readonly BindableProperty IsBarberProperty = BindableProperty.Create(nameof(IsBarber), typeof(bool), typeof(AppShell), false);
 
     public bool IsBarber
     {
-        get => (bool)GetValue(IsBarberProperty);
-        set => SetValue(IsBarberProperty, value);
+        get { return (bool)GetValue(IsBarberProperty); }
+        set { SetValue(IsBarberProperty, value); }
     }
 
     public AppShell()
 	{
         //Console.WriteLine($"IsBarber value: {IsBarber}");
+        IsBarber = ABarber.isBarber;
         InitializeComponent();
+        
 	}
-
-    
 }

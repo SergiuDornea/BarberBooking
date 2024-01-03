@@ -1,3 +1,4 @@
+using BarberBooking.Auth;
 namespace BarberBooking;
 
 public partial class LogoutPage : ContentPage
@@ -10,7 +11,7 @@ public partial class LogoutPage : ContentPage
     private async void OnLogoutButtonClicked(object sender, EventArgs e)
     {
         // setam isBarber to false 
-        //AppShell.IsBarber = false;
+        ABarber.isBarber = false;
         App.Current.MainPage = new NavigationPage(new LoginPage());
     }
 }

@@ -28,7 +28,7 @@ namespace BarberBooking.Models
         public string Email { get; set; }
 
         [OneToMany(CascadeOperations = CascadeOperation.All)]
-        public List<Programare> ProgramariList { get; set; }
+        public List<Programare> Programari { get; set; }
 
     }
 }

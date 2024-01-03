@@ -33,5 +33,8 @@ namespace BarberBooking.Models
         [MaxLength(1)]
         public int Rateing { get; set; }
 
+        [OneToMany(CascadeOperations = CascadeOperation.All)]
+        public List<Programare> Programari { get; set; }
+
     }
 }

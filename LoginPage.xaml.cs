@@ -17,22 +17,25 @@ public partial class LoginPage : ContentPage
         string email = emailEntry.Text;
         string parola = parolaEntry.Text;
 
+        int? userId = await App.Database.GetUserIdByEmailAndPasswordAsync(email, parola);
 
         Barber authenticatedBarber = await userService.AuthenticateBarberAsync(email, parola);
         Client authenticatedClient = await userService.AuthenticateClientAsync(email, parola);
 
         if (authenticatedBarber != null)
         {
+             int loggedInUserId = userId.Value;
             // setam isBarber to true
-            //AppShell.Current.IsBarber = true;
+            ABarber.isBarber = true;
             //Console.WriteLine($"IsBarber value after log in: {AppShell.IsBarber}");
             // Redirect to Barber Main Page
-            await Navigation.PushAsync(new BarberMainPage());
+            await Navigation.PushAsync(new BarberMainPage(loggedInUserId));
         }
         else if (authenticatedClient != null)
         {
+            int loggedInUserId = userId.Value;
             // setam isBarber to false
-           // AppShell.Current.IsBarber = false;
+            ABarber.isBarber = false;
             //Console.WriteLine($"IsBarber value after log in: {AppShell.IsBarber}");
             // Redirect to  Main Page
             await Navigation.PushAsync(new MainPage());

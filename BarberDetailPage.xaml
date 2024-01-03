@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BarberBooking.BarberDetailPage"
+             Title="BarberDetailPage">
+    <StackLayout Margin="20">
+        <Label Text="Barber Name: " FontAttributes="Bold" />
+        <Label Text="{Binding Nume}" />
+
+        <Label Text="Barber Surname: " FontAttributes="Bold" />
+        <Label Text="{Binding Prenume}" />
+
+        <Label Text="Barber Phone: " FontAttributes="Bold" />
+        <Label Text="{Binding Telefon}" />
+
+        <!-- Add other properties you want to display -->
+
+        <Button Text="Edit" Clicked="OnEditButtonClicked" />
+        <Button Text="Delete" Clicked="OnDeleteButtonClicked" />
+    </StackLayout>
+</ContentPage>
