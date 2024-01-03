@@ -7,8 +7,8 @@
         <Entry x:Name="numeEntry" Placeholder="Nume" />
         <Entry x:Name="prenumeEntry" Placeholder="Prenume" />
         <Entry x:Name="telefonEntry" Placeholder="Telefon" />
+        <Entry x:Name="emailEntry" Placeholder="Email" />
 
-        <!-- Add other Entry fields for properties you want to edit -->
 
         <Button Text="Save" Clicked="OnSaveButtonClicked" />
     </StackLayout>

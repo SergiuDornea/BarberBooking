@@ -2,8 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BarberBooking.ProgramareDetailPage"
-             Title="Detalii despre programare:">
+             Title="Detalii programare:">
     <StackLayout Margin="20">
+      
         <Label Text="Descrierea serviciului dorit de client: " FontAttributes="Bold" />
         <Label Text="{Binding Descriere}" />
 

@@ -24,8 +24,10 @@ public partial class BarberEntryPage : ContentPage
         numeEntry.Text = currentBarber.Nume;
         prenumeEntry.Text = currentBarber.Prenume;
         telefonEntry.Text = currentBarber.Telefon;
+        emailEntry.Text = currentBarber.Email;
+        
 
-        // Load other Entry fields accordingly
+       
     }
 
     private async void OnSaveButtonClicked(object sender, EventArgs e)
@@ -33,8 +35,8 @@ public partial class BarberEntryPage : ContentPage
         currentBarber.Nume = numeEntry.Text;
         currentBarber.Prenume = prenumeEntry.Text;
         currentBarber.Telefon = telefonEntry.Text;
+        currentBarber.Email = emailEntry.Text;
 
-        // Set other properties accordingly
 
         await App.Database.SaveBarberAsync(currentBarber);
         await Navigation.PopAsync();
