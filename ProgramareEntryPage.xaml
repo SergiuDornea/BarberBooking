@@ -5,6 +5,7 @@
              Title="ProgramareEntryPage">
     <StackLayout>
         <Entry x:Name="descriereEntry" Placeholder="Descriere" />
+       
         <DatePicker x:Name="dataDatePicker" />
 
         <Button Text="Save" Clicked="OnSaveButtonClicked" />

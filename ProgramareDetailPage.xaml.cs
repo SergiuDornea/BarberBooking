@@ -20,7 +20,7 @@ public partial class ProgramareDetailPage : ContentPage
 
     private async void OnDeleteButtonClicked(object sender, EventArgs e)
     {
-        bool isUserConfirmed = await DisplayAlert("Delete Programare", "Are you sure you want to delete this Programare?", "Yes", "No");
+        bool isUserConfirmed = await DisplayAlert("Sterge Programare", "Esti sigur ca vrei sa stergi aceasta programare?", "Da", "Nu");
 
         if (isUserConfirmed)
         {

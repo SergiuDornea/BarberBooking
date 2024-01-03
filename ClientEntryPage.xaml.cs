@@ -23,13 +23,16 @@ public partial class ClientEntryPage : ContentPage
     private void LoadClientDetails()
     {
         numeEntry.Text = currentClient.Nume;
-        // Load other Entry fields accordingly
+        prenumeEntry.Text = currentClient.Prenume;
+        emailEntry.Text = currentClient.Email;
+        
     }
 
     private async void OnSaveButtonClicked(object sender, EventArgs e)
     {
         currentClient.Nume = numeEntry.Text;
-        // Set other properties accordingly
+        currentClient.Prenume = prenumeEntry.Text;
+        currentClient.Email = emailEntry.Text;
 
         await App.Database.SaveClientAsync(currentClient);
         await Navigation.PopAsync();

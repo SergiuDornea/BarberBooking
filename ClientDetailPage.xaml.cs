@@ -20,7 +20,7 @@ public partial class ClientDetailPage : ContentPage
 
     private async void OnDeleteButtonClicked(object sender, EventArgs e)
     {
-        bool isUserConfirmed = await DisplayAlert("Delete Client", "Are you sure you want to delete this Client?", "Yes", "No");
+        bool isUserConfirmed = await DisplayAlert("Sterge Barber", "Esti sigur ca vrei sa stergi acest client?", "Da", "Nu");
 
         if (isUserConfirmed)
         {
