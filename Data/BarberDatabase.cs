@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using SQLite;
 using BarberBooking.Models;
+using BarberBooking.Auth;
+
 
 namespace BarberBooking.Data
 {
@@ -16,7 +18,27 @@ namespace BarberBooking.Data
         {
             _database = new SQLiteAsyncConnection(dbPath);
             _database.CreateTableAsync<Programare>().Wait();
+            _database.CreateTableAsync<Barber>().Wait();
+            _database.CreateTableAsync<Client>().Wait();
+
         }
+
+        //IUser - pentru auth 
+        public Task<Barber> AuthenticateBarberAsync(string email, string password)
+        {
+            return _database.Table<Barber>()
+                .Where(u => u.Email == email && u.Parola == password)
+                .FirstOrDefaultAsync();
+        }
+
+        public Task<Client> AuthenticateClientAsync(string email, string password)
+        {
+            return _database.Table<Client>()
+                .Where(u => u.Email == email && u.Parola == password)
+                .FirstOrDefaultAsync();
+        }
+
+        // Programare
         public Task<List<Programare>> GetProgramariAsync()
         {
             return _database.Table<Programare>().ToListAsync();
@@ -42,5 +64,98 @@ namespace BarberBooking.Data
         {
             return _database.DeleteAsync(programare);
         }
+
+
+        // Barber
+        public Task<List<Barber>> GetBarbersAsync()
+        {
+            return _database.Table<Barber>().ToListAsync();
+        }
+
+        public Task<Barber> GetBarberAsync(int id)
+        {
+            return _database.Table<Barber>()
+                            .Where(i => i.ID == id)
+                            .FirstOrDefaultAsync();
+        }
+
+        public Task<int> SaveBarberAsync(Barber barber)
+        {
+            if (barber.ID != 0)
+            {
+                return _database.UpdateAsync(barber);
+            }
+            else
+            {
+                return _database.InsertAsync(barber);
+            }
+        }
+
+        public Task<int> DeleteBarberAsync(Barber barber)
+        {
+            return _database.DeleteAsync(barber);
+        }
+
+        // Client
+
+        public Task<List<Client>> GetClientsAsync()
+        {
+            return _database.Table<Client>().ToListAsync();
+        }
+
+        public Task<Client> GetClientAsync(int id)
+        {
+            return _database.Table<Client>()
+                            .Where(i => i.ID == id)
+                            .FirstOrDefaultAsync();
+        }
+
+        public Task<int> SaveClientAsync(Client client)
+        {
+            if (client.ID != 0)
+            {
+                return _database.UpdateAsync(client);
+            }
+            else
+            {
+                return _database.InsertAsync(client);
+            }
+        }
+
+        public Task<int> DeleteClientAsync(Client client)
+        {
+            return _database.DeleteAsync(client);
+        }
+
+
+        // in functie de ID
+
+        public Task<List<Programare>> GetVisibleProgramariForClientAsync(int clientId)
+        {
+            return _database.Table<Programare>()
+                .Where(p => p.Client.ID == clientId)
+                .ToListAsync();
+        }
+
+        public async Task<int?> GetUserIdByEmailAndPasswordAsync(string email, string password)
+        {
+            var barberUserId = await _database.Table<Barber>()
+                .Where(u => u.Email == email && u.Parola == password)
+                .FirstOrDefaultAsync();
+
+            var clientUserId = await _database.Table<Client>()
+                .Where(u => u.Email == email && u.Parola == password)
+                .FirstOrDefaultAsync();
+
+            if (barberUserId != null)
+                return barberUserId.ID;
+            else if (clientUserId != null)
+                return clientUserId.ID;
+            else
+                return null;
+        }
+
     }
+
+
 }

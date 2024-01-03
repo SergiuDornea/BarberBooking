@@ -6,15 +6,24 @@
     xmlns:local="clr-namespace:BarberBooking"
     Shell.FlyoutBehavior="Disabled">
     <TabBar>
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
 
-        <ShellContent
-    Title="Vezi Programare"
-    ContentTemplate="{DataTemplate local:ProgramareEntryPage}"/>
+    <Tab Title="Home">
+            <ShellContent ContentTemplate="{DataTemplate local:LoginPage}" Route="MainPage" />
+    </Tab>
 
+    <Tab Title="Vezi programari">
+            <ShellContent ContentTemplate="{DataTemplate local:ProgramareListPage}"/>
+    </Tab>
+        
+    <Tab Title="Log OUT">
+        <ShellContent ContentTemplate="{DataTemplate local:LogoutPage}"/>
+    </Tab>
+
+        <!-- Barber-specific tab -->
+    <!--<Tab  Title="Barber-specific Tab">
+        <ShellContent ContentTemplate="{DataTemplate local:ClientListPage}"  IsVisible="{Binding isBarber}"/>
+     </Tab>-->
     </TabBar>
-
 </Shell>
+
+

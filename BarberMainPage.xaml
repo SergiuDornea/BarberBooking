@@ -1,7 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="BarberBooking.MainPage">
+             x:Class="BarberBooking.BarberMainPage"
+             Title="BarberMainPage">
 
     <ScrollView>
         <VerticalStackLayout
@@ -16,7 +17,7 @@
      HorizontalOptions="Center" />
 
             <Label
-     Text="Welcome"
+     Text="Welcome BARBER"
      SemanticProperties.HeadingLevel="Level1"
      FontSize="32"
      HorizontalOptions="Center" />
@@ -24,13 +25,30 @@
             <Label
      Text="to the BarberShopBookigApp!"
      SemanticProperties.HeadingLevel="Level2"
-     SemanticProperties.Description="welcome msg"
+     SemanticProperties.Description="Welcome to dot net Multi platform App U I"
      FontSize="18"
      HorizontalOptions="Center" />
 
 
+            <!-- Butoane de nav la CRUD-->
+            <Button
+    Text="Clienti"
+    Clicked="OnViewClientsClicked"
+    HorizontalOptions="Center"
+    Margin="0,10,0,0" />
+
+            <Button
+    Text="Barberi"
+    Clicked="OnViewBarbersClicked"
+    HorizontalOptions="Center"
+    Margin="0,10,0,0" />
+
+            <Button
+Text="Programari"
+Clicked="OnViewProgramariClicked"
+HorizontalOptions="Center"
+Margin="0,10,0,0" />
 
         </VerticalStackLayout>
     </ScrollView>
-
 </ContentPage>

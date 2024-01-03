@@ -1,4 +1,5 @@
 ﻿using SQLite;
+using SQLiteNetExtensions.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,16 @@ namespace BarberBooking.Models
         [MaxLength(100), Unique]
         public string Descriere { get; set; }
         public DateTime Data { get; set; }
+
+        [ManyToOne]
+        public Client Client { get; set; }
+
+        // Foreign key reference to Barber
+        [ForeignKey(typeof(Barber))]
+        public int BarberId { get; set; }
+
+        [ManyToOne]
+        public Barber Barber { get; set; }
 
     }
 }

@@ -1,34 +1,44 @@
 using BarberBooking.Models;
-
+using BarberBooking.Auth;
 namespace BarberBooking;
 
 public partial class ProgramareEntryPage : ContentPage
 {
-	public ProgramareEntryPage()
-	{
-		InitializeComponent();
-	}
+    private Programare currentProgramare;
 
-    protected override async void OnAppearing()
+    private int loggedInUserId = 0;
+    public ProgramareEntryPage()
     {
-        base.OnAppearing();
-        listView.ItemsSource = await App.Database.GetProgramariAsync();
+        InitializeComponent();
+        currentProgramare = new Programare();
     }
-    async void AddProgramareClicked(object sender, EventArgs e)
+
+    public ProgramareEntryPage(Programare programare)
     {
-        await Navigation.PushAsync(new ProgramarePage
-        {
-            BindingContext = new Programare()
-        });
+        InitializeComponent();
+        currentProgramare = programare;
+        LoadProgramareDetails();
     }
-    async void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
+
+    private void LoadProgramareDetails()
     {
-        if (e.SelectedItem != null)
-        {
-            await Navigation.PushAsync(new ProgramarePage
-            {
-                BindingContext = e.SelectedItem as Programare
-            });
-        }
+        descriereEntry.Text = currentProgramare.Descriere;
+        dataDatePicker.Date = currentProgramare.Data;
     }
+
+    private async void OnSaveButtonClicked(object sender, EventArgs e)
+    {
+        currentProgramare.Descriere = descriereEntry.Text;
+        currentProgramare.Data = dataDatePicker.Date;
+
+        await App.Database.SaveProgramareAsync(currentProgramare);
+        await Navigation.PopAsync();
+    }
+
+    private async void OnDeleteButtonClicked(object sender, EventArgs e)
+    {
+        await App.Database.DeleteProgramareAsync(currentProgramare);
+        await Navigation.PopAsync();
+    }
+    
 }
