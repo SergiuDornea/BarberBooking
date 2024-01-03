@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SQLite;
 using BarberBooking.Models;
+using BarberBooking.Auth;
 
 namespace BarberBooking.Data
 {
@@ -18,6 +19,22 @@ namespace BarberBooking.Data
             _database.CreateTableAsync<Programare>().Wait();
             _database.CreateTableAsync<Barber>().Wait();
             _database.CreateTableAsync<Client>().Wait();
+
+        }
+
+        //IUser - pentru auth 
+        public Task<Barber> AuthenticateBarberAsync(string email, string password)
+        {
+            return _database.Table<Barber>()
+                .Where(u => u.Email == email && u.Parola == password)
+                .FirstOrDefaultAsync();
+        }
+
+        public Task<Client> AuthenticateClientAsync(string email, string password)
+        {
+            return _database.Table<Client>()
+                .Where(u => u.Email == email && u.Parola == password)
+                .FirstOrDefaultAsync();
         }
 
         // Programare
@@ -109,4 +126,6 @@ namespace BarberBooking.Data
             return _database.DeleteAsync(client);
         }
     }
+
+
 }

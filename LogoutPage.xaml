@@ -4,7 +4,7 @@
              x:Class="BarberBooking.LogoutPage"
              Title="LogoutPage">
     <StackLayout Margin="20">
-        <Label Text="Are you sure you want to log out?" />
+        <Label Text="Esti sigur ca vrei sa iesi din cont?" />
         <Button Text="Logout" Clicked="OnLogoutButtonClicked" />
     </StackLayout>
 </ContentPage>

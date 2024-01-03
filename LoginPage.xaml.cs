@@ -1,4 +1,5 @@
 using BarberBooking.Auth;
+using BarberBooking.Models;
 namespace BarberBooking;
 
 public partial class LoginPage : ContentPage
@@ -16,9 +17,24 @@ public partial class LoginPage : ContentPage
         string email = emailEntry.Text;
         string parola = parolaEntry.Text;
 
-        if (userService.AuthenticateUser(email, parola))
+
+        Barber authenticatedBarber = await userService.AuthenticateBarberAsync(email, parola);
+        Client authenticatedClient = await userService.AuthenticateClientAsync(email, parola);
+
+        if (authenticatedBarber != null)
         {
-            //daca log inul e valid - redirect user la home
+            // setam isBarber to true
+            //AppShell.Current.IsBarber = true;
+            //Console.WriteLine($"IsBarber value after log in: {AppShell.IsBarber}");
+            // Redirect to Barber Main Page
+            await Navigation.PushAsync(new BarberMainPage());
+        }
+        else if (authenticatedClient != null)
+        {
+            // setam isBarber to false
+           // AppShell.Current.IsBarber = false;
+            //Console.WriteLine($"IsBarber value after log in: {AppShell.IsBarber}");
+            // Redirect to  Main Page
             await Navigation.PushAsync(new MainPage());
         }
         else

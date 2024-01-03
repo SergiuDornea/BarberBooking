@@ -24,7 +24,7 @@ namespace BarberBooking.Models
         [MaxLength(10), Unique]
         public string Telefon { get; set; }
 
-        [MaxLength(50), Unique]
+        [MaxLength(50)]
         public string Parola { get; set; }
 
         [MaxLength(50), Unique]

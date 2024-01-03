@@ -22,6 +22,9 @@ public partial class AuthPage : ContentPage
         IUser newUser = new Client { Email = email, Parola = parola, Nume = nume, Prenume = prenume  };
         await App.Database.SaveClientAsync((Client)newUser);
 
+        //IUser newUser = new Barber { Email = email, Parola = parola, Nume = nume, Prenume = prenume };
+       // await App.Database.SaveBarberAsync((Barber)newUser);
+
         await DisplayAlert("Sign reusit", "Cont creat+.", "OK");
         await Navigation.PushAsync(new MainPage());
     }

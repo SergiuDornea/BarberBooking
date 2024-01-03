@@ -20,7 +20,7 @@ namespace BarberBooking.Models
         public string Prenume { get; set; }
 
 
-        [MaxLength(50) ]
+        [MaxLength(50)]
         public string Parola { get; set; }
 
 

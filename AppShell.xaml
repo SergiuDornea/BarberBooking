@@ -18,5 +18,26 @@
         <ShellContent
    Title="Log OUT"
    ContentTemplate="{DataTemplate local:LogoutPage}"/>
+
+
+        <!-- Barber-specific tab -->
+        <ShellContent
+            Title="Barber-specific Tab"
+            ContentTemplate="{DataTemplate local:ClientListPage}"
+            IsVisible="{Binding IsBarber}"/>
+
     </TabBar>
 </Shell>
+
+
+<!-- Barber-visible only tab --><!--
+<ShellContent
+ Title="Clienti"
+ ContentTemplate="{DataTemplate local:ClientListPage}"
+ IsVisible="{Binding IsBarber}"/>
+
+--><!-- Barber-visible only tab --><!--
+<ShellContent
+Title="Barberi"
+ContentTemplate="{DataTemplate local:ClientListPage}"
+IsVisible="{Binding IsBarber}"/>-->
